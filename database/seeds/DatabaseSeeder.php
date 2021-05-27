@@ -11,16 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0;$i<12;$i++){
-            factory(\App\Cars::class)->make(['user_id'=>1])->save();
-        }
-        foreach (factory(\App\User::class,10)->make() as $user){
-            $user->save();
-            \App\Role::create(['user_id'=>$user->id,'role_id'=>0]);
-            for ($i=0;$i<rand(1,3);$i++){
-                factory(\App\Cars::class)->make(['user_id'=>$user->id])->save();
-            }
-        }
+        factory(\App\User::class,10)->create()->pluck('id')->each(function ($user_id){
+            \App\Role::create(['user_id'=>$user_id,'role_id'=>0]);
 
+            factory(\App\Cars::class,rand(0,4))->create(['user_id'=>$user_id])->pluck('id')->each(function($car_id){
+                factory(\App\Fine::class,rand(0,4))->create(['car_id'=>$car_id]);
+                if(rand(0,1)==0)factory(\App\Parking::class)->create(['car_id'=>$car_id]);
+            });
+        });
     }
 }

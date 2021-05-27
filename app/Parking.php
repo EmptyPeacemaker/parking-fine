@@ -4,11 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fine extends Model
+class Parking extends Model
 {
-    protected $fillable=['car_id','text','price','adr'];
+    protected $fillable=['car_id'];
+    public const CREATED_AT = 'create';
+    public const UPDATED_AT = null;
+
     public function getCar()
     {
         return $this->hasOne(Cars::class,'id','car_id');
     }
+
 }

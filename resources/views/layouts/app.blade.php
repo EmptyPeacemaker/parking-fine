@@ -29,6 +29,7 @@
                         <li><a class="dropdown-item" href="{{route('admin.index')}}">Панель администратора</a></li>
                         @endif
                         <li><a class="dropdown-item" href="{{route('add-car')}}">Мои автомобили</a></li>
+                        <li><a class="dropdown-item" href="{{route('parking')}}">На штраф стоянке</a></li>
                         <li><a class="dropdown-item" href="{{route('home')}}">Штрафы</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}">Выход</a></li>

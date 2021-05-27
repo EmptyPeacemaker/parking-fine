@@ -11,6 +11,7 @@
             <th scope="col">Штраф</th>
             <th scope="col">Стоимость</th>
             <th scope="col">Дата оформления</th>
+            <th scope="col">Адрес</th>
         </tr>
         </thead>
         <tbody>
@@ -27,9 +28,10 @@
             <td>{{$fine->text}}</td>
             <td>{{$fine->price}}</td>
             <td>{{$fine->created_at->format('H:i d/m/Y')}}</td>
+            <td>{{$fine->adr}}</td>
         </tr>
         @empty
-            <tr><td colspan="3" class="text-center">Штрафы не обнаружены</td></tr>
+            <tr><td colspan="6" class="text-center">Штрафы не обнаружены</td></tr>
         @endforelse
         </tbody>
     </table>

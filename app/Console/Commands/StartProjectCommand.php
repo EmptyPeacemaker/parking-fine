@@ -56,5 +56,11 @@ class StartProjectCommand extends Command
         ])->id;
         Role::create(['user_id'=>$id,'role_id'=>1]);
 
+        factory(\App\Cars::class,rand(1,4))->create(['user_id'=>$id])->pluck('id')->each(function($car_id){
+            factory(\App\Fine::class,rand(1,4))->create(['car_id'=>$car_id]);
+        });
+
+        Artisan::call('db:seed');
+
     }
 }
